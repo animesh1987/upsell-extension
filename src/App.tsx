@@ -1,7 +1,7 @@
 function App() {
     return (
       <div>
-        <h1>Hello from Vite + React!</h1>
+        <h1>Extension Upsell</h1>
       </div>
     )
   }
