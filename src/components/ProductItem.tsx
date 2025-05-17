@@ -14,10 +14,10 @@ export const ProductItem: React.FC<ProductItemProp> = ({ product }) => {
     }
 
     return (
-        <div className="max-w-md rounded-2xl border border-gray-200 p-6 shadow-sm bg-white">
-          <h3 className="text-xl font-semibold text-gray-900">Add {product.name}</h3>
-          <p className="mt-2 text-sm text-gray-600">${product.price}</p>
-          <button onClick={onBuy} className="mt-4 inline-flex items-center rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 transition">
+        <div className="p-6 bg-white flex justify-between">
+          <h4 className="font-semibold text-gray-900 w64">{product.name}</h4>
+          <div className="mt-2 text-sm text-gray-600 w14">${product.price}</div>
+          <button onClick={onBuy} className="w-32 mt-4 items-center rounded-lg bg-neutral-950 px-4 py-2 text-white hover:bg-neutral-800 transition">
             Add to Cart
           </button>
         </div>
