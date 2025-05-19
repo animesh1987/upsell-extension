@@ -5,5 +5,5 @@ const getProductUrl = 'https://upsell-worker.animeshsingh1987.workers.dev/getPro
 export async function getProduct() {
     const product = await axios.get(getProductUrl);
 
-    return product.data.data;
+    return product.data;
 }
