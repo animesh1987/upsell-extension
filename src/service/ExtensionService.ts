@@ -23,8 +23,10 @@ class ExtensionService {
             const extensionService = await module.initializeExtensionService({
               extensionId,
               parentOrigin,
-              taggedElementId: 'content',
+              taggedElementId: 'root',
             });
+
+            console.log(extensionService);
 
             console.log('extension service instantiated');
 
@@ -34,6 +36,7 @@ class ExtensionService {
     }
 
     getServiceInstance() {
+        console.log(ExtensionService._instance)
         return ExtensionService._instance;
     }
 }
