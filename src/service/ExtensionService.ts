@@ -1,9 +1,9 @@
-export class ExtensionService {
-    static instance;
+class ExtensionService {
+    static _instance = null;
     isLoading: boolean;
 
     constructor() {
-        if (ExtensionService.instance) {
+        if (ExtensionService._instance) {
             throw Error('There can only be one instance');
         }
 
@@ -17,8 +17,7 @@ export class ExtensionService {
         this.isLoading = true;
 
         (window as any).checkoutKitLoader.load('extension').then(async function (module) {
-            // const params = new URL(document.location).searchParams;
-            const params = new URL(document.location.search).searchParams
+            const params = new URLSearchParams(document.location.search);
             const extensionId = params.get('extensionId');
             const parentOrigin = params.get('parentOrigin');
             const extensionService = await module.initializeExtensionService({
@@ -27,8 +26,16 @@ export class ExtensionService {
               taggedElementId: 'content',
             });
 
-            ExtensionService.instance = extensionService;
+            console.log('extension service instantiated');
+
+            ExtensionService._instance = extensionService;
             this.isLoading = false;
         });
     }
+
+    getServiceInstance() {
+        return ExtensionService._instance;
+    }
 }
+
+export const extensionServiceInstance = new ExtensionService();
