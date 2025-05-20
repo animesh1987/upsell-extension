@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { extensionServiceInstance } from '../service/ExtensionService';
+import { extensionServiceInstance } from '../service';
 
 const ExensionContext = createContext(extensionServiceInstance);
 

@@ -1,2 +1,3 @@
-export { addToCart } from './updateCart';
-export { getProduct } from './getProduct';
+export { updateCart } from './api/updateCart';
+export { getProduct } from './api/getProduct';
+export { extensionServiceInstance } from './application/ExtensionService';

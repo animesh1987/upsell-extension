@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import './index.css';
 import App from './App'
 import { ExtensionProvider } from './context/ExtensionContext';
-import { extensionServiceInstance } from './service/ExtensionService';
+import { extensionServiceInstance } from './service';
 
 async function main() {
   await extensionServiceInstance.init();
