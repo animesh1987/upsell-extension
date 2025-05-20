@@ -17,7 +17,7 @@ class ExtensionService {
         }
         this.isLoading = true;
 
-        (window as any).checkoutKitLoader.load('extension').then(async function (module) {
+        (window as any).checkoutKitLoader.load('extension').then(async (module) => {
             const params = new URLSearchParams(document.location.search);
             const extensionId = params.get('extensionId');
             const parentOrigin = params.get('parentOrigin');

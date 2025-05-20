@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export async function updateCart(productId: number, cartId: string) {
-    const getProductUrl = 'http://localhost:8787/addToCart'
+    const getProductUrl = 'https://upsell-worker.animeshsingh1987.workers.dev/addToCart'
 
     const cart = await axios.post(getProductUrl, {
         cart_id: cartId,

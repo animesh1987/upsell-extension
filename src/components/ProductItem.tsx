@@ -23,7 +23,7 @@ export const ProductItem: React.FC<ProductItemProp> = ({ product }) => {
       payload: { show: true },
     });
     try {
-      await updateCart(product.id, instance.getCartId());
+      await updateCart(product.id, extension.getCartId());
       
       instance.post({ type: 'EXTENSION:RELOAD_CHECKOUT'});
       instance.post({
