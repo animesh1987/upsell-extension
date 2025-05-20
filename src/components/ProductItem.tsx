@@ -3,11 +3,11 @@ import { useExtension } from '../context/ExtensionContext';
 import { updateCart } from '../service/api/updateCart';
 
 interface ProductItemProp {
-    product: {
-        name: string;
-        id: number;
-        price: number;
-    }
+  product: {
+    name: string;
+    id: number;
+    price: number;
+  }
 }
 
 export const ProductItem: FC<ProductItemProp> = ({ product }) => {
@@ -16,8 +16,6 @@ export const ProductItem: FC<ProductItemProp> = ({ product }) => {
   const extension = useExtension();
 
   const instance = extension.getServiceInstance();
-
-  console.log(extension.getServiceInstance(), extension.getCartId());
 
   const addToCart: () => void = async () => {
     setIsAdding(true);
@@ -29,7 +27,7 @@ export const ProductItem: FC<ProductItemProp> = ({ product }) => {
     try {
       await updateCart(product.id, extension.getCartId());
       
-      instance.post({ type: 'EXTENSION:RELOAD_CHECKOUT'});
+      instance.post({ type: 'EXTENSION:RELOAD_CHECKOUT' });
       instance.post({
         type: 'EXTENSION:SHOW_LOADING_INDICATOR',
         payload: { show: false },
