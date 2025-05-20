@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getProduct } from '../service';
 import { ProductItem } from './ProductItem';
+import { ProductLoadingSkeleton } from './ProductLoadingSkeleton';
 
 export function Product() {
     const [isLoading, setIsLoading] = useState(false);
@@ -18,10 +19,8 @@ export function Product() {
     }, []);
 
     if (isLoading) {
-        return <>Loading</>;
+        return <ProductLoadingSkeleton />;
     }
-
-    console.log(products, isLoading);
 
     return products.map(product => <ProductItem key={product.id} product={product} />);
 }

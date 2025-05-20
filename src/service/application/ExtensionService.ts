@@ -28,8 +28,6 @@ class ExtensionService {
               taggedElementId: 'root',
             });
 
-            console.log(extensionService);
-
             console.log('extension service instantiated');
 
             ExtensionService._instance = extensionService;
