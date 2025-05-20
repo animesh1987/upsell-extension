@@ -39,7 +39,6 @@ class ExtensionService {
     }
 
     getServiceInstance() {
-        console.log(ExtensionService._instance)
         return ExtensionService._instance;
     }
 
