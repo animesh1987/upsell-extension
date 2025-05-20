@@ -1,5 +1,6 @@
 import React from 'react';
 import { useExtension } from '../context/ExtensionContext';
+import { updateCart } from '../service/updateCart';
 
 interface ProductItemProp {
     product: {
@@ -14,11 +15,28 @@ export const ProductItem: React.FC<ProductItemProp> = ({ product }) => {
 
   const instance = extension.getServiceInstance();
 
-  console.log(extension.getServiceInstance());
+  console.log(extension.getServiceInstance(), extension.getCartId());
 
-  const onBuy: () => void = () => {
-    console.log('firing reload');
-    instance.post({ type: 'EXTENSION:RELOAD_CHECKOUT'});
+  const addToCart: () => void = async () => {
+    instance.post({
+      type: 'EXTENSION:SHOW_LOADING_INDICATOR',
+      payload: { show: true },
+    });
+    try {
+      await updateCart(product.id, instance.getCartId());
+      
+      instance.post({ type: 'EXTENSION:RELOAD_CHECKOUT'});
+      instance.post({
+        type: 'EXTENSION:SHOW_LOADING_INDICATOR',
+        payload: { show: false },
+      }); 
+    } catch (err) {
+      console.log(err);
+      instance.post({
+        type: 'EXTENSION:SHOW_LOADING_INDICATOR',
+        payload: { show: false },
+      }); 
+    }
   }
 
   return (
@@ -30,7 +48,7 @@ export const ProductItem: React.FC<ProductItemProp> = ({ product }) => {
             <div className="mt-2 text-sm text-gray-600 w14">${product.price}.00</div>
           </div>
         </div>
-        <button onClick={onBuy} className="w-30 m-2 items-center rounded-xs bg-neutral-800 px-2 py-2 text-white hover:bg-neutral-600 transition">
+        <button onClick={addToCart} className="w-30 m-2 items-center rounded-xs bg-neutral-800 px-2 py-2 text-white hover:bg-neutral-600 transition">
           Add to Cart
         </button>
       </div>

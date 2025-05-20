@@ -1,5 +1,6 @@
 class ExtensionService {
     static _instance = null;
+    _cartId = null;
     isLoading: boolean;
 
     constructor() {
@@ -20,6 +21,7 @@ class ExtensionService {
             const params = new URLSearchParams(document.location.search);
             const extensionId = params.get('extensionId');
             const parentOrigin = params.get('parentOrigin');
+            const cartId = params.get('cartId');
             const extensionService = await module.initializeExtensionService({
               extensionId,
               parentOrigin,
@@ -31,6 +33,7 @@ class ExtensionService {
             console.log('extension service instantiated');
 
             ExtensionService._instance = extensionService;
+            this._cartId = cartId;
             this.isLoading = false;
         });
     }
@@ -38,6 +41,12 @@ class ExtensionService {
     getServiceInstance() {
         console.log(ExtensionService._instance)
         return ExtensionService._instance;
+    }
+
+    getCartId(): string {
+        if (this._cartId) {
+            return this._cartId;
+        }
     }
 }
 

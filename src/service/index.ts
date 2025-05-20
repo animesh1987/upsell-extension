@@ -1,2 +1,2 @@
-export { addToCart } from './addToCart';
+export { addToCart } from './updateCart';
 export { getProduct } from './getProduct';
