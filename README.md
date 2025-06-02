@@ -21,7 +21,7 @@ A React-based BigCommerce checkout extension that displays recommended products 
 
 ## 📋 Prerequisites
 
-- Node.js (v16 or higher)
+- Node.js (v22)
 - npm or yarn
 - BigCommerce store with checkout extension capabilities
 - Access to BigCommerce Developer Tools
@@ -37,13 +37,6 @@ A React-based BigCommerce checkout extension that displays recommended products 
 2. **Install dependencies**
    ```bash
    npm install
-   ```
-
-3. **Set up environment variables**
-   Create a `.env` file in the root directory and configure your environment variables:
-   ```env
-   # Add your environment variables here
-   VITE_API_BASE_URL=your-api-base-url
    ```
 
 ## 🚀 Development
